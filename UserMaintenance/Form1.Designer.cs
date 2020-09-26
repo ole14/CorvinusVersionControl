@@ -34,6 +34,7 @@
             this.btAdd = new System.Windows.Forms.Button();
             this.btSTF = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -72,19 +73,30 @@
             // 
             // btSTF
             // 
-            this.btSTF.Location = new System.Drawing.Point(261, 110);
+            this.btSTF.Location = new System.Drawing.Point(261, 96);
             this.btSTF.Name = "btSTF";
-            this.btSTF.Size = new System.Drawing.Size(219, 23);
+            this.btSTF.Size = new System.Drawing.Size(219, 37);
             this.btSTF.TabIndex = 6;
             this.btSTF.Text = "button1";
             this.btSTF.UseVisualStyleBackColor = true;
             this.btSTF.Click += new System.EventHandler(this.btSTF_Click);
+            // 
+            // btDelete
+            // 
+            this.btDelete.Location = new System.Drawing.Point(262, 185);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(94, 41);
+            this.btDelete.TabIndex = 7;
+            this.btDelete.Text = "button1";
+            this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(489, 239);
+            this.Controls.Add(this.btDelete);
             this.Controls.Add(this.btSTF);
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.textFullName);
@@ -105,6 +117,7 @@
         private System.Windows.Forms.Button btAdd;
         private System.Windows.Forms.Button btSTF;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button btDelete;
     }
 }
 
