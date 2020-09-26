@@ -22,6 +22,7 @@ namespace UserMaintenance
             lbFullName.Text = Resource1.FullName;
             btAdd.Text = Resource1.Add;
             btSTF.Text = Resource1.SaveToFile;
+            btDelete.Text = Resource1.Delete;
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
@@ -56,6 +57,18 @@ namespace UserMaintenance
                 writer.Close();
             }
             
+        }
+
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                users.RemoveAt(listBox1.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show("A törléshez ki kell választani egy nevet a listából!");
+            }
         }
     }
 }
