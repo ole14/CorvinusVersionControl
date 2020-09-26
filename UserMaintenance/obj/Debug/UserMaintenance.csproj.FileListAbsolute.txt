@@ -6,3 +6,5 @@ E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionContr
 E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UserMaintenance\obj\Debug\UserMaintenance.csproj.GenerateResource.cache
 E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UserMaintenance\obj\Debug\UserMaintenance.exe
 E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UserMaintenance\obj\Debug\UserMaintenance.pdb
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UserMaintenance\obj\Debug\UserMaintenance.Form1.resources
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UserMaintenance\obj\Debug\UserMaintenance.Properties.Resource1.resources
