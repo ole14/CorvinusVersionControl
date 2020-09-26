@@ -1,0 +1,2 @@
+# CorvinusVersionControl
+Tanulási anyag
