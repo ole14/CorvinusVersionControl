@@ -32,6 +32,8 @@
             this.lbFullName = new System.Windows.Forms.Label();
             this.textFullName = new System.Windows.Forms.TextBox();
             this.btAdd = new System.Windows.Forms.Button();
+            this.btSTF = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // listBox1
@@ -68,11 +70,22 @@
             this.btAdd.UseVisualStyleBackColor = true;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
+            // btSTF
+            // 
+            this.btSTF.Location = new System.Drawing.Point(261, 110);
+            this.btSTF.Name = "btSTF";
+            this.btSTF.Size = new System.Drawing.Size(219, 23);
+            this.btSTF.TabIndex = 6;
+            this.btSTF.Text = "button1";
+            this.btSTF.UseVisualStyleBackColor = true;
+            this.btSTF.Click += new System.EventHandler(this.btSTF_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(489, 239);
+            this.Controls.Add(this.btSTF);
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.textFullName);
             this.Controls.Add(this.lbFullName);
@@ -90,6 +103,8 @@
         private System.Windows.Forms.Label lbFullName;
         private System.Windows.Forms.TextBox textFullName;
         private System.Windows.Forms.Button btAdd;
+        private System.Windows.Forms.Button btSTF;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

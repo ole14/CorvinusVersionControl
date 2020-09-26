@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace UserMaintenance
             InitializeComponent();
             lbFullName.Text = Resource1.FullName;
             btAdd.Text = Resource1.Add;
+            btSTF.Text = Resource1.SaveToFile;
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
@@ -33,6 +35,27 @@ namespace UserMaintenance
                 FullName = textFullName.Text
             };
             users.Add(u);
+            textFullName.Clear();
+        }
+
+        private void btSTF_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+            sfd.InitialDirectory = @"E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UserMaintenance\bin\Debug\";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter writer = new StreamWriter(sfd.FileName);
+                        writer.WriteLine("ID;Teljes Név");
+
+                for (int i = 0; i < users.ToList().Count; i++)
+                {
+                        writer.WriteLine(users[i].ID.ToString() + ";" + users[i].FullName.ToString());
+                }
+                writer.Dispose();
+                writer.Close();
+            }
+            
         }
     }
 }
