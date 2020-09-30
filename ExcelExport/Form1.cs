@@ -36,7 +36,7 @@ namespace ExcelExport
                 x1WB = x1App.Workbooks.Add(Missing.Value); //Új munkafüzet
                 x1Sheet = x1WB.ActiveSheet(); //Új munkalap
 
-                // CreateTable();
+                CreateTable();
 
                 x1App.Visible = true;
                 x1App.UserControl = true;
@@ -58,7 +58,18 @@ namespace ExcelExport
 
         private void CreateTable()
         {
-            throw new NotImplementedException();
+            string[] headers = new string[]
+            {
+                "Kód"
+                ,"Eladó"
+                ,"Oldal"
+                ,"Kerület"
+                ,"Lift"
+                ,"Szobák száma"
+                ,"Alapterület (m2)"
+                ,"Ár (mFt)"
+                ,"Négyzetméter ár (Ft/m2)"
+            };
         }
 
         private void LoadData() 
