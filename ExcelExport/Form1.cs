@@ -100,7 +100,10 @@ namespace ExcelExport
                 values[szamlal, 8] = "";
                 szamlal++;
             }
-            GetCell();
+
+            x1Sheet.get_Range(
+                        GetCell(2, 1),
+                        GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
         }
 
         private string GetCell(int x, int y)
