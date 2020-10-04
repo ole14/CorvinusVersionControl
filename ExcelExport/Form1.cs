@@ -1,11 +1,7 @@
 ﻿using System;
+using System.Dynamic;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
@@ -35,7 +31,7 @@ namespace ExcelExport
             {
                 x1App = new Excel.Application(); //ez indítja az excelt és tölti be az objektumot
                 x1WB = x1App.Workbooks.Add(Missing.Value); //Új munkafüzet
-                x1Sheet = x1WB.ActiveSheet(); //Új munkalap
+                x1Sheet = x1WB.ActiveSheet; //Új munkalap
 
                 CreateTable();
 
