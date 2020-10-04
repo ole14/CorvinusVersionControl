@@ -93,7 +93,7 @@ namespace ExcelExport
                 values[szamlal, 5] = f.NumberOfRooms;
                 values[szamlal, 6] = f.FloorArea;
                 values[szamlal, 7] = f.Price;
-                values[szamlal, 8] = "";
+                values[szamlal, 8] = ("=(" + GetCell(szamlal + 2, 8) + "*1000000)/" + GetCell(szamlal + 2, 7)).ToString();
                 szamlal++;
             }
 
