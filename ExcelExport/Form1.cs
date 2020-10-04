@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
+using System.Drawing;
 
 namespace ExcelExport
 {
@@ -12,7 +13,22 @@ namespace ExcelExport
     {
         RealEstateEntities context = new RealEstateEntities();
         List<Flat> Flats;
-        
+
+        string[] headers = new string[]
+            {
+                "Kód"
+                ,"Eladó"
+                ,"Oldal"
+                ,"Kerület"
+                ,"Lift"
+                ,"Szobák száma"
+                ,"Alapterület (m2)"
+                ,"Ár (mFt)"
+                ,"Négyzetméter ár (Ft/m2)"
+            };
+
+        int LastRow = 0;
+
 
         Excel.Application x1App; // Alkalmazás változó
         Excel.Workbook x1WB; //Munkafüzet
@@ -55,19 +71,7 @@ namespace ExcelExport
 
         private void CreateTable()
         {
-            string[] headers = new string[]
-            {
-                "Kód"
-                ,"Eladó"
-                ,"Oldal"
-                ,"Kerület"
-                ,"Lift"
-                ,"Szobák száma"
-                ,"Alapterület (m2)"
-                ,"Ár (mFt)"
-                ,"Négyzetméter ár (Ft/m2)"
-            };
-
+            
             for (int i = 0; i < headers.Length; i++)
             {
                 x1Sheet.Cells[1, i + 1] = headers[i];
@@ -93,13 +97,40 @@ namespace ExcelExport
                 values[szamlal, 5] = f.NumberOfRooms;
                 values[szamlal, 6] = f.FloorArea;
                 values[szamlal, 7] = f.Price;
-                values[szamlal, 8] = ("=(" + GetCell(szamlal + 2, 8) + "*1000000)/" + GetCell(szamlal + 2, 7)).ToString();
+                values[szamlal, 8] = ("=ROUND((" + GetCell(szamlal + 2, 8) + "*1000000)/" + GetCell(szamlal + 2, 7) + ",2)").ToString();
                 szamlal++;
             }
 
             x1Sheet.get_Range(
                         GetCell(2, 1),
                         GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
+            
+            int lastRowID = x1Sheet.UsedRange.Rows.Count;
+            LastRow = lastRowID;
+            
+            FormatTable();
+        }
+
+        private void FormatTable()
+        {
+            Excel.Range headerRange = x1Sheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
+            headerRange.Font.Bold = true;
+            headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            headerRange.EntireColumn.AutoFit();
+            headerRange.RowHeight = 40;
+            headerRange.Interior.Color = Color.LightBlue;
+            headerRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+            Excel.Range elsoOszlop = x1Sheet.get_Range(GetCell(2, 1), GetCell(LastRow, 1));
+            elsoOszlop.Font.Bold = true;
+            elsoOszlop.Interior.Color = Color.LightGreen;
+
+            Excel.Range utolsoOszlop = x1Sheet.get_Range(GetCell(2, 9), GetCell(LastRow, 9));
+            utolsoOszlop.Interior.Color = Color.LightYellow;
+
+            Excel.Range tartalom = x1Sheet.get_Range(GetCell(2, 1), GetCell(LastRow, 9));
+            tartalom.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
         }
 
         private string GetCell(int x, int y)
