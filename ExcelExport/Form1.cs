@@ -16,6 +16,7 @@ namespace ExcelExport
     {
         RealEstateEntities context = new RealEstateEntities();
         List<Flat> Flats;
+        
 
         Excel.Application x1App; // Alkalmazás változó
         Excel.Workbook x1WB; //Munkafüzet
@@ -70,6 +71,54 @@ namespace ExcelExport
                 ,"Ár (mFt)"
                 ,"Négyzetméter ár (Ft/m2)"
             };
+
+            for (int i = 0; i < headers.Length; i++)
+            {
+                x1Sheet.Cells[1, i + 1] = headers[i];
+            }
+
+            object[,] values = new object[Flats.Count, headers.Length];
+
+            int szamlal = 0;
+            foreach (Flat f in Flats)
+            {
+                values[szamlal, 0] = f.Code;
+                values[szamlal, 1] = f.Vendor;
+                values[szamlal, 2] = f.Side;
+                values[szamlal, 3] = f.District;
+                if (f.Elevator == true)
+                {
+                    values[szamlal, 4] = "Van";
+                }
+                else
+                {
+                    values[szamlal, 4] = "Nincs";
+                }
+                values[szamlal, 5] = f.NumberOfRooms;
+                values[szamlal, 6] = f.FloorArea;
+                values[szamlal, 7] = f.Price;
+                values[szamlal, 8] = "";
+                szamlal++;
+            }
+            GetCell();
+        }
+
+        private string GetCell(int x, int y)
+        {
+            string ExcelCoordinate = "";
+            int dividend = y;
+            int modulo;
+
+            while (dividend > 0)
+            {
+                modulo = (dividend - 1) % 26;
+                ExcelCoordinate = Convert.ToChar(65 + modulo).ToString() + ExcelCoordinate;
+                dividend = (int)((dividend - modulo) / 26);
+            }
+
+            ExcelCoordinate += x.ToString();
+
+            return ExcelCoordinate;
         }
 
         private void LoadData() 
