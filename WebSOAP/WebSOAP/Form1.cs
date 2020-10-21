@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using WebSOAP.Entities;
 using WebSOAP.MnbServiceReference;
@@ -21,6 +22,26 @@ namespace WebSOAP
             InitializeComponent();
             GetWebSoap();
             dataGridView1.DataSource = Rates;
+            dataGridView1.AutoResizeColumns();
+            chartRateData.DataSource = Rates;
+            ChartFill();
+        }
+
+        private void ChartFill()
+        {
+            var series = chartRateData.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+            series.BorderWidth = 2;
+
+            var legend = chartRateData.Legends[0];
+            legend.Enabled = false;
+
+            var chartarea = chartRateData.ChartAreas[0];
+            chartarea.AxisX.MajorGrid.Enabled = false;
+            chartarea.AxisY.MajorGrid.Enabled = false;
+            chartarea.AxisY.IsStartedFromZero = false;
         }
 
         private void GetWebSoap()
@@ -58,7 +79,7 @@ namespace WebSOAP
                 var unit = decimal.Parse(child.GetAttribute("unit"));
                 var values = decimal.Parse(child.InnerText);
                 if (unit != 0)
-                    rate.Value = values / unit;
+                    rate.Value = (values / unit)/100;
             }
         }
     }
