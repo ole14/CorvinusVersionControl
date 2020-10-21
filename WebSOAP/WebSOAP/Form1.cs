@@ -17,6 +17,7 @@ namespace WebSOAP
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +25,27 @@ namespace WebSOAP
             dateTimePicker1.CustomFormat = "yyyy-MM-dd";
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
             dateTimePicker2.CustomFormat = "yyyy-MM-dd";
+            comboBox1.DataSource = Currencies;
+            CurrenciesFill();
             RefreshData();
+        }
+
+        private void CurrenciesFill()
+        {
+            var mnbService1 = new MNBArfolyamServiceSoapClient();
+
+            var request1 = new GetCurrenciesRequestBody();
+
+            var response1 = mnbService1.GetCurrencies(request1);
+
+            var result1 = response1.GetCurrenciesResult;
+
+            XmlFill();
+        }
+
+        private void XmlFill()
+        {
+            throw new NotImplementedException();
         }
 
         private void RefreshData()
