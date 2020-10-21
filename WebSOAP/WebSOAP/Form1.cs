@@ -20,6 +20,16 @@ namespace WebSOAP
         public Form1()
         {
             InitializeComponent();
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "yyyy-MM-dd";
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            Rates.Clear();
             GetWebSoap();
             dataGridView1.DataSource = Rates;
             dataGridView1.AutoResizeColumns();
@@ -51,8 +61,8 @@ namespace WebSOAP
             var request = new GetExchangeRatesRequestBody()
             {
                 currencyNames = "EUR",
-                startDate = "2020-01-01",
-                endDate = "2020-06-30"
+                startDate = dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"),
+                endDate = dateTimePicker2.Value.Date.ToString("yyyy-MM-dd")
             };
 
             var response = mnbService.GetExchangeRates(request);
@@ -81,6 +91,21 @@ namespace WebSOAP
                 if (unit != 0)
                     rate.Value = (values / unit)/100;
             }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
         }
     }
 }
