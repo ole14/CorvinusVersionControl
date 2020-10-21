@@ -60,7 +60,7 @@ namespace WebSOAP
 
             var request = new GetExchangeRatesRequestBody()
             {
-                currencyNames = "EUR",
+                currencyNames = comboBox1.SelectedItem.ToString(),
                 startDate = dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"),
                 endDate = dateTimePicker2.Value.Date.ToString("yyyy-MM-dd")
             };
