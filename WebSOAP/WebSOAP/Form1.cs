@@ -17,7 +17,7 @@ namespace WebSOAP
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
-        BindingList<string> Currencies = new BindingList<string>();
+        BindingList<CurrenciesData> Currencies = new BindingList<CurrenciesData>();
         public Form1()
         {
             InitializeComponent();
@@ -25,27 +25,10 @@ namespace WebSOAP
             dateTimePicker1.CustomFormat = "yyyy-MM-dd";
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
             dateTimePicker2.CustomFormat = "yyyy-MM-dd";
-            comboBox1.DataSource = Currencies;
+            dateTimePicker1.Value = new DateTime(2020,07,01);
+            dateTimePicker2.Value = new DateTime(2020, 09, 30);
             CurrenciesFill();
             RefreshData();
-        }
-
-        private void CurrenciesFill()
-        {
-            var mnbService1 = new MNBArfolyamServiceSoapClient();
-
-            var request1 = new GetCurrenciesRequestBody();
-
-            var response1 = mnbService1.GetCurrencies(request1);
-
-            var result1 = response1.GetCurrenciesResult;
-
-            XmlFill();
-        }
-
-        private void XmlFill()
-        {
-            throw new NotImplementedException();
         }
 
         private void RefreshData()
@@ -58,21 +41,18 @@ namespace WebSOAP
             ChartFill();
         }
 
-        private void ChartFill()
+        private void CurrenciesFill()
         {
-            var series = chartRateData.Series[0];
-            series.ChartType = SeriesChartType.Line;
-            series.XValueMember = "Date";
-            series.YValueMembers = "Value";
-            series.BorderWidth = 2;
+            var mnbService1 = new MNBArfolyamServiceSoapClient();
 
-            var legend = chartRateData.Legends[0];
-            legend.Enabled = false;
+            var request1 = new GetCurrenciesRequestBody();
 
-            var chartarea = chartRateData.ChartAreas[0];
-            chartarea.AxisX.MajorGrid.Enabled = false;
-            chartarea.AxisY.MajorGrid.Enabled = false;
-            chartarea.AxisY.IsStartedFromZero = false;
+            var response1 = mnbService1.GetCurrencies(request1);
+
+            var result1 = response1.GetCurrenciesResult;
+
+            XmlFill(result1);
+            
         }
 
         private void GetWebSoap()
@@ -93,6 +73,25 @@ namespace WebSOAP
             XmlDataLoad(result);
         }
 
+        private void XmlFill(string result1)
+        {
+            var xml2 = new XmlDocument();
+            xml2.LoadXml(result1);
+            
+            foreach (XmlElement curre in xml2.DocumentElement)
+            {
+                var curr = new CurrenciesData();
+                Currencies.Add(curr);
+
+                for (int i = 0; i < 75; i++)
+                {
+                    var child2 = (XmlElement)curre.ChildNodes[i];
+                    curr.currency = child2.InnerText;
+                    comboBox1.Items.Add(curr.currency);
+                }
+            }
+        }
+
         private void XmlDataLoad(string result)
         {
             var xml = new XmlDocument();
@@ -105,6 +104,8 @@ namespace WebSOAP
 
                 rate.Date = DateTime.Parse(xel.GetAttribute("date"));
                 var child = (XmlElement)xel.ChildNodes[0];
+                if (child == null)
+                    continue;
                 rate.Currency = child.GetAttribute("curr");
 
                 var unit = decimal.Parse(child.GetAttribute("unit"));
@@ -112,6 +113,23 @@ namespace WebSOAP
                 if (unit != 0)
                     rate.Value = (values / unit)/100;
             }
+        }
+
+        private void ChartFill()
+        {
+            var series = chartRateData.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+            series.BorderWidth = 2;
+
+            var legend = chartRateData.Legends[0];
+            legend.Enabled = false;
+
+            var chartarea = chartRateData.ChartAreas[0];
+            chartarea.AxisX.MajorGrid.Enabled = false;
+            chartarea.AxisY.MajorGrid.Enabled = false;
+            chartarea.AxisY.IsStartedFromZero = false;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
