@@ -37,4 +37,16 @@ namespace MicroSimulation.Entities
         public int Age { get; set; }
         public double Probability { get; set; }
     }
+
+    public class Male
+    {
+        public int Year { get; set; }
+        public int NbrPopul { get; set; }
+    }
+
+    public class Female
+    {
+        public int Year { get; set; }
+        public int NbrPopul { get; set; }
+    }
 }
