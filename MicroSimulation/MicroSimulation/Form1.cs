@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,15 +18,31 @@ namespace MicroSimulation
         List<Person> Population = new List<Person>();
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
+        Random rng = new Random(1234);
         public Form1()
         {
             InitializeComponent();
-            Population = GetPopulation(@"C:\Temp\nép.csv");
+            Population = GetPopulation(@"C:\Temp\nép-teszt.csv");
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
-            dataGridView1.DataSource = Population;
-            dataGridView2.DataSource = BirthProbabilities;
-            dataGridView3.DataSource = DeathProbabilities;
+
+            for (int year = 2005; year <= 2024; year++)
+            {
+                for (int i = 0; i < Population.Count; i++)
+                {
+                    
+                }
+
+                int Malepop = (from x in Population
+                               where x.Gender == Gender.Male && x.IsAlive
+                               select x).Count();
+                int Femalepop = (from x in Population
+                                 where x.Gender == Gender.Felmale && x.IsAlive
+                                 select x).Count();
+
+                Console.WriteLine(
+                    string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, Malepop, Femalepop));
+            }
         }
         public List<Person> GetPopulation(string csvpath)
         {
@@ -46,6 +63,8 @@ namespace MicroSimulation
                 return population;
             }
         }
+
+        
 
         public List<BirthProbability> GetBirthProbabilities(string csvpath)
         {
