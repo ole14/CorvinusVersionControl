@@ -14,7 +14,7 @@ namespace MicroSimulation.Entities
 
     public class Person
     {
-        public int BirthDate { get; set; }
+        public int BirthYear { get; set; }
         public Gender Gender { get; set; }
         public int NbrOfChildren { get; set; }
         public bool IsAlive { get; set; }
