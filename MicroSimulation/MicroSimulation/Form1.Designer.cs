@@ -47,6 +47,7 @@
             this.start.TabIndex = 0;
             this.start.Text = "Start";
             this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
             // 
             // browse
             // 
@@ -57,6 +58,7 @@
             this.browse.TabIndex = 1;
             this.browse.Text = "Browse";
             this.browse.UseVisualStyleBackColor = true;
+            this.browse.Click += new System.EventHandler(this.browse_Click);
             // 
             // richTextBox1
             // 

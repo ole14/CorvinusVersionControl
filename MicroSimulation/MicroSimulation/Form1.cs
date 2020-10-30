@@ -22,11 +22,18 @@ namespace MicroSimulation
         public Form1()
         {
             InitializeComponent();
-            Population = GetPopulation(@"C:\Temp\nép-teszt.csv");
+            numericUpDown1.Maximum = 2100;
+            numericUpDown1.Minimum = 1900;
+            numericUpDown1.Value = 2024;
+        }
+
+        private void Simulation()
+        {
+
+            Population = GetPopulation(textBox1.Text);
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
-
-            for (int year = 2005; year <= 2024; year++)
+            for (int year = 2005; year <= numericUpDown1.Value; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
@@ -136,6 +143,18 @@ namespace MicroSimulation
                 }
             }
             return deathProbabilities;
+        }
+
+        private void start_Click(object sender, EventArgs e)
+        {
+            Simulation();
+        }
+
+        private void browse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.ShowDialog();
+            textBox1.Text = ofd.FileName.ToString();
         }
     }
 }
