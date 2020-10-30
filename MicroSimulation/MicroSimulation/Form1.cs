@@ -30,7 +30,7 @@ namespace MicroSimulation
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
-                    
+                    SimStep(year, Population[i]);
                 }
 
                 int Malepop = (from x in Population
@@ -44,6 +44,37 @@ namespace MicroSimulation
                     string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, Malepop, Femalepop));
             }
         }
+
+        private void SimStep(int year, Person person)
+        {
+            if (!person.IsAlive) return;
+
+            byte Age = (byte)(year - person.BirthYear);
+
+            double pDeath = (from x in DeathProbabilities
+                             where x.Gender == person.Gender && x.Age == Age
+                             select x.Probability).FirstOrDefault();
+
+            if (rng.NextDouble() <= pDeath)
+                person.IsAlive = false;
+
+            if(person.IsAlive == true && person.Gender == Gender.Felmale)
+            {
+                double pBirth = (from x in BirthProbabilities
+                              where x.Age == Age
+                              select x.Probability).FirstOrDefault();
+
+                if (rng.NextDouble() <= pBirth)
+                {
+                    Person uj = new Person();
+                    uj.BirthYear = year;
+                    uj.NbrOfChildren = 0;
+                    uj.Gender = (Gender)rng.Next(1, 3);
+                    Population.Add(uj);
+                }
+            }
+        }
+
         public List<Person> GetPopulation(string csvpath)
         {
             List<Person> population = new List<Person>();
@@ -99,7 +130,7 @@ namespace MicroSimulation
                     deathProbabilities.Add(new DeathProbability()
                     {
                         Gender = (Gender)Enum.Parse(typeof(Gender), line[0]),
-                        NbrOfChildren = int.Parse(line[1]),
+                        Age = int.Parse(line[1]),
                         Probability = double.Parse(line[2].Replace(',', '.'))
                     });
                 }
