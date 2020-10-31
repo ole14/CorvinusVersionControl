@@ -38,6 +38,10 @@ namespace MicroSimulation
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
 
+            progressBar1.Maximum = (int)numericUpDown1.Value - 2005 + 1;
+            progressBar1.Minimum = 0;
+            progressBar1.Value = 1;
+
             for (int year = 2005; year <= numericUpDown1.Value; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
@@ -55,40 +59,45 @@ namespace MicroSimulation
                 Console.WriteLine(
                     string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, Malepop, Femalepop));
 
+                Male m = new Male();
+                m.Year = year;
+                m.NbrPopul = Malepop;
+                
+                Female f = new Female();
+                f.Year = year;
+                f.NbrPopul = Femalepop;
+                
+                MaleNumbers.Add(m);
+                FemaleNumbers.Add(f);
 
-                List<Male> males = new List<Male>();
-                males.Add(new Male()
-                {
-                    Year = year,
-                    NbrPopul = Malepop
-                });
-
-                List<Female> females = new List<Female>();
-                females.Add(new Female()
-                {
-                    Year = year,
-                    NbrPopul = Femalepop
-                });
-
-                Displayresults();
+                progressBar1.Increment(1);
             }
+            Displayresults();
         }
 
         private void Displayresults()
         {
-            for (int year = 2005; year <= numericUpDown1.Value; year++)
+            foreach (var item in MaleNumbers)
             {
-                var maleno = (from x in MaleNumbers
-                                  where x.Year == year
-                                  select x.NbrPopul);
-
-                var femaleno = (from x in FemaleNumbers
-                                   where x.Year == year
-                                   select x.NbrPopul);
-
-                richTextBox1.Text = "Szimulációs év: " + year.ToString()
-                                    + "\n \t Fiúk: " + maleno.ToString()
-                                    + "\n \t Lányok: " + femaleno.ToString() + "\n";
+                foreach (var item2 in FemaleNumbers)
+                {
+                    if (item.Year == item2.Year)
+                    {
+                        if (richTextBox1.Text == "")
+                        {
+                            richTextBox1.Text = "Szimulációs év: " + item.Year.ToString()
+                                            + "\n \t \t Fiúk: " + item.NbrPopul.ToString()
+                                            + "\n \t \t Lányok: " + item2.NbrPopul.ToString() + "\n \n";
+                        }
+                        else
+                        {
+                            string rtext = richTextBox1.Text;
+                            richTextBox1.Text = rtext + "Szimulációs év: " + item.Year.ToString()
+                                            + "\n \t \t Fiúk: " + item.NbrPopul.ToString()
+                                            + "\n \t \t Lányok: " + item2.NbrPopul.ToString() + "\n \n";
+                        }
+                    }
+                }
             }
         }
 
