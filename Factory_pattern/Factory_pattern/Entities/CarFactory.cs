@@ -11,7 +11,7 @@ namespace Factory_pattern.Entities
     {
         public Toy CreateNew()
         {
-            return new Ball();
+            return new Car();
         }
 
     }

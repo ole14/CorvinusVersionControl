@@ -8,3 +8,4 @@ E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionContr
 E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\Factory_pattern\Factory_pattern\obj\Debug\Factory_pattern.csproj.CoreCompileInputs.cache
 E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\Factory_pattern\Factory_pattern\obj\Debug\Factory_pattern.exe
 E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\Factory_pattern\Factory_pattern\obj\Debug\Factory_pattern.pdb
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\Factory_pattern\Factory_pattern\bin\Debug\Images\car.png
