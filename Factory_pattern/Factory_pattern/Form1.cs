@@ -110,5 +110,44 @@ namespace Factory_pattern
                 button1.BackColor = cd.Color;
             }
         }
+
+        private void presentButton_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory
+            {
+                BoxColor = box_c_butt.BackColor,
+                RibbonColor = ribb_c_butt.BackColor
+            };
+        }
+
+        private void box_c_butt_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            ColorDialog cd = new ColorDialog();
+            cd.Color = box_c_butt.BackColor;
+            if (cd.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            else
+            {
+                box_c_butt.BackColor = cd.Color;
+            }
+        }
+
+        private void ribb_c_butt_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            ColorDialog cd = new ColorDialog();
+            cd.Color = ribb_c_butt.BackColor;
+            if (cd.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            else
+            {
+                ribb_c_butt.BackColor = cd.Color;
+            }
+        }
     }
 }

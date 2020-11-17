@@ -36,6 +36,9 @@
             this.ball_butt = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.presentButton = new System.Windows.Forms.Button();
+            this.box_c_butt = new System.Windows.Forms.Button();
+            this.ribb_c_butt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -94,18 +97,56 @@
             this.button1.BackColor = System.Drawing.Color.Olive;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(287, 13);
+            this.button1.Location = new System.Drawing.Point(150, 74);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 55);
+            this.button1.Size = new System.Drawing.Size(131, 31);
             this.button1.TabIndex = 4;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // presentButton
+            // 
+            this.presentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.presentButton.Location = new System.Drawing.Point(287, 13);
+            this.presentButton.Name = "presentButton";
+            this.presentButton.Size = new System.Drawing.Size(131, 55);
+            this.presentButton.TabIndex = 5;
+            this.presentButton.Text = "PRESENT";
+            this.presentButton.UseVisualStyleBackColor = true;
+            this.presentButton.Click += new System.EventHandler(this.presentButton_Click);
+            // 
+            // box_c_butt
+            // 
+            this.box_c_butt.BackColor = System.Drawing.Color.Olive;
+            this.box_c_butt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.box_c_butt.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.box_c_butt.Location = new System.Drawing.Point(287, 74);
+            this.box_c_butt.Name = "box_c_butt";
+            this.box_c_butt.Size = new System.Drawing.Size(131, 31);
+            this.box_c_butt.TabIndex = 6;
+            this.box_c_butt.UseVisualStyleBackColor = false;
+            this.box_c_butt.Click += new System.EventHandler(this.box_c_butt_Click);
+            // 
+            // ribb_c_butt
+            // 
+            this.ribb_c_butt.BackColor = System.Drawing.Color.Olive;
+            this.ribb_c_butt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ribb_c_butt.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ribb_c_butt.Location = new System.Drawing.Point(287, 111);
+            this.ribb_c_butt.Name = "ribb_c_butt";
+            this.ribb_c_butt.Size = new System.Drawing.Size(131, 31);
+            this.ribb_c_butt.TabIndex = 7;
+            this.ribb_c_butt.UseVisualStyleBackColor = false;
+            this.ribb_c_butt.Click += new System.EventHandler(this.ribb_c_butt_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ribb_c_butt);
+            this.Controls.Add(this.box_c_butt);
+            this.Controls.Add(this.presentButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ball_butt);
@@ -128,6 +169,9 @@
         private System.Windows.Forms.Button ball_butt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button presentButton;
+        private System.Windows.Forms.Button box_c_butt;
+        private System.Windows.Forms.Button ribb_c_butt;
     }
 }
 
