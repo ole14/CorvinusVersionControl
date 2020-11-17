@@ -92,5 +92,20 @@ namespace Factory_pattern
         {
             Factory = new BallFactory();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            ColorDialog cd = new ColorDialog();
+            cd.Color = button1.BackColor;
+            if (cd.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            else
+            {
+                button1.BackColor = cd.Color;
+            }
+        }
     }
 }
