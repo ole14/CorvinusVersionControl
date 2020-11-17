@@ -90,7 +90,10 @@ namespace Factory_pattern
 
         private void ball_butt_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory
+            {
+                BallColor = button1.BackColor
+            };
         }
 
         private void button1_Click(object sender, EventArgs e)
