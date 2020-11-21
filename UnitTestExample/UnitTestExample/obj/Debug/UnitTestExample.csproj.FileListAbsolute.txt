@@ -7,3 +7,13 @@ C:\Users\dburk\source\repos\UnitTestExample\UnitTestExample\obj\Debug\UnitTestEx
 C:\Users\dburk\source\repos\UnitTestExample\UnitTestExample\obj\Debug\UnitTestExample.csproj.GenerateResource.cache
 C:\Users\dburk\source\repos\UnitTestExample\UnitTestExample\obj\Debug\UnitTestExample.exe
 C:\Users\dburk\source\repos\UnitTestExample\UnitTestExample\obj\Debug\UnitTestExample.pdb
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UnitTestExample\UnitTestExample\bin\Debug\UnitTestExample.exe.config
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UnitTestExample\UnitTestExample\bin\Debug\UnitTestExample.exe
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UnitTestExample\UnitTestExample\bin\Debug\UnitTestExample.pdb
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UnitTestExample\UnitTestExample\obj\Debug\UnitTestExample.csprojAssemblyReference.cache
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UnitTestExample\UnitTestExample\obj\Debug\UnitTestExample.Form1.resources
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UnitTestExample\UnitTestExample\obj\Debug\UnitTestExample.Properties.Resources.resources
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UnitTestExample\UnitTestExample\obj\Debug\UnitTestExample.csproj.GenerateResource.cache
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UnitTestExample\UnitTestExample\obj\Debug\UnitTestExample.csproj.CoreCompileInputs.cache
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UnitTestExample\UnitTestExample\obj\Debug\UnitTestExample.exe
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\UnitTestExample\UnitTestExample\obj\Debug\UnitTestExample.pdb
