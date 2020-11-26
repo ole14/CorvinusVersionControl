@@ -27,9 +27,9 @@ namespace worldHardestG
             InitializeComponent();
 
             label1.Text = "1. generáció";
-            gc.GameOver += Gc_GameOver;
             ga = gc.ActivateDisplay();
             this.Controls.Add(ga);
+            gc.GameOver += Gc_GameOver;
 
             for (int i = 0; i < populationSize; i++)
             {
@@ -48,6 +48,11 @@ namespace worldHardestG
             label1.Text = string.Format(
                 "{0}. generáció", generation
                 );
+
+            var playerList = from p in gc.GetCurrentPlayers()
+                             orderby p.GetFitness() descending
+                             select p;
+            var topPerformers = playerList.Take(populationSize / 2).ToList();
         }
     }
 }
