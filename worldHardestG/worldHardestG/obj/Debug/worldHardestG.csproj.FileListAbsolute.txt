@@ -9,3 +9,4 @@ E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionContr
 E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\worldHardestG\worldHardestG\obj\Debug\worldHardestG.csproj.CopyComplete
 E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\worldHardestG\worldHardestG\obj\Debug\worldHardestG.exe
 E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\worldHardestG\worldHardestG\obj\Debug\worldHardestG.pdb
+E:\tananyag\5. félév\Informatikai rendszerek fejlesztése\CorvinusVersionControl\worldHardestG\worldHardestG\obj\Debug\worldHardestG.Form1.resources
