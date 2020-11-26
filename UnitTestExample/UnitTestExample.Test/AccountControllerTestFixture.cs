@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Activities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,7 +52,6 @@ namespace UnitTestExample.Test
             TestCase("irf@uni-corvinus.hu", "Asdf1jkle"),
             TestCase("irf@uni-corvinus.hu", "Asdf1kle")
             ]
-
         public void TestRegisterHappyPath(string email, string password)
         {
             // Arrange
@@ -63,7 +63,26 @@ namespace UnitTestExample.Test
             //Assert
             Assert.AreEqual(email, AccountResult.Email);
             Assert.AreEqual(password, AccountResult.Password);
-            Assert.AreNotEqual(Guid.Empty, AccountResult.ID);
+            Assert.AreEqual(Guid.Empty, AccountResult.ID);
+        }
+
+        public void TestRegisterValidateException(string email, string password)
+        {
+            // Arrange
+            var AccountController = new AccountController();
+
+            // Act
+            try
+            {
+                var actualResult = AccountController.Register(email, password);
+                Assert.Fail();
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOf<ValidationException>(ex);
+            }
+
+            // Assert
         }
     }
 }
